@@ -96,7 +96,7 @@ const eliminarUsuario = async (req, res) => {
   const { id } = req.params;
   try {
     await pool.execute(
-      "UPDATE usuarios SET fechaEliminacion = NOW() WHERE id = ?",
+      "UPDATE usuarios SET fechaEliminacion = NOW(), card_uid=NULL WHERE id = ?",
       [id]
     );
     res.status(200).send(`Usuario ${id} eliminado exitosamente`);
